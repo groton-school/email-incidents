@@ -10,5 +10,6 @@ Drag this link to your bookmarks bar: [IIQ Emails](javascript:(function()%7B%24(
  
 When viewing any list of tickets in IncidentIQ, click the bookmarklet to enable the copy email links.
  
-| Before | After |
+| Before	| After	|
+| --------- | ----- |
 | ![Without](/images/without.png) | ![With](/images/with.png) |
