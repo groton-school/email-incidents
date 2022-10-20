@@ -6,7 +6,7 @@ Make it easy to copy the email for an IncidentIQ ticket to CC or forward email t
 
 1. Create a new bookmark
 2. Give it a reasonable name (e.g. `IIQ Emails`)
-3. Paste the contents of [iiq-emails-bookmarklet.js](iiq-emails-bookmarklet.js) in as the URL
+3. Paste the contents of [iiq-emails-bookmarklet.url](iiq-emails-bookmarklet.url) in as the URL
 
 ## Use
 
