@@ -18,6 +18,7 @@ When viewing any list of tickets in IncidentIQ, click the bookmarklet to enable 
 
 ## Known Limitations
 
+-   Zero attention is paid to whether or not the page affected is IIQ or not
 -   Repeated invocations will just keep adding more email links to the page
 -   The email links block access to the actual ticket details
 -   The page must be refreshed to get rid of the email links (and block on details)
