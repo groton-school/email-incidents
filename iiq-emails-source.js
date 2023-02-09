@@ -1,6 +1,7 @@
 // TODO detect whether affected page is IIQ (only run on viable pages)
 // TODO escape title text for safer email addresses
-const existing = $('.iiq-email');
+// TODO clean up accumulated scripts at the bottom of the page
+let existing = $('.iiq-email');
 if (existing.length) {
   $(existing).remove();
 } else {
