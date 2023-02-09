@@ -1,1 +1,1 @@
-javascript:(function(){const j = document.createElement('script');j.setAttribute('src', 'https://raw.githubusercontent.com/groton-school/iiq-emails-bookmarklet/main/iiq-emails-source.js');document.body.appendChild(j); IIQEmails()}());
+javascript:(function(){const j = document.createElement('script');j.setAttribute('src', 'https://raw.githubusercontent.com/groton-school/iiq-emails-bookmarklet/main/iiq-emails-source.js');document.body.appendChild(j);}());
