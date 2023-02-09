@@ -10,7 +10,13 @@ if (existing.length) {
     const link = $('<a class="iiq-email link" href="#">Copy Email Address</a>').appendTo($(a).parent().parent());
     const info = $(a).closest('.ticket-info-cell');
     const number = $(info).find('.ticket-number').text();
-    const title = a.innerText;
+    const title = a.innerText        // https://stackoverflow.com/a/14890774
+      .replace(/'\b/g, "\u2018")     // Opening singles
+      .replace(/\b'/g, "\u2019")     // Closing singles
+      .replace(/"\b/g, "\u201c")     // Opening doubles
+      .replace(/\b"/g, "\u201d")     // Closing doubles
+      .replace(/--/g, "\u2014")      // em-dashes
+      .replace(/\b\u2018\b/g, "'");  // And things like "it's" back to normal.;
     $(link).click(e => {
       e.stopPropagation();
       e.preventDefault();
