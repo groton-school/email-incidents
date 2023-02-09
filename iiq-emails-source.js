@@ -1,13 +1,9 @@
 // TODO detect whether affected page is IIQ (only run on viable pages)
 // TODO escape title text for safer email addresses
-let present = false;
-
-$('.iiq-email').each((i, e) => {
-  present = true;
-  $(e).remove();
-});
-
-if (!present) {
+const existing = $('.iiq-email');
+if (existing.length) {
+  $(existing).remove();
+} else {
   $('.link-view-ticket[href*="/tickets/"]').each((i, a) => {
     const guid = /tickets\/(.*)/.exec(a.href)[1];
     const link = $('<a class="iiq-email link" href="#">Copy Email Address</a>').appendTo($(a).parent().parent());
