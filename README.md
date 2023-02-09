@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY9QnKE0Wqag9y38OIgEvb88cA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 # IIQ Emails Bookmarklet
 
 Make it easy to copy the email for an IncidentIQ ticket to CC or forward email threads.
@@ -16,7 +18,7 @@ When viewing any list of tickets in IncidentIQ, click the bookmarklet to enable 
 
 | Before                          | After                     |
 | ------------------------------- | ------------------------- |
-| ![Without](/images/without.png) | ![With](/images/with.png) |
+| <a href="/images/without.png" data-lightbox="screenshots"/><img src="/images/without.png" /></a> | <a href="/images/with.png" data-lightbox="screenshots"><img src="/images/with.png" /></a> |
 
 ## Known Limitations
 
@@ -25,3 +27,5 @@ When viewing any list of tickets in IncidentIQ, click the bookmarklet to enable 
 -   The email links block access to the actual ticket details
 -   The page must be refreshed to get rid of the email links (and block on details)
 -   No text-escaping is done, to prevent double-quotes in the ticket title from breaking the email address format `"Name" <email@example.com>`
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js" integrity="sha512-6gudNVbNM/cVsLUMOb8g2b/RBqtQJ3aDfRFgU+5paeaCTtbYY/Dg00MzZq7r6RvJGI2KKtPBhjkHGTL/iOe21A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
