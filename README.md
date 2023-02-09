@@ -18,7 +18,7 @@ When viewing any list of tickets in IncidentIQ, click the bookmarklet to enable 
 
 | Before                          | After                     |
 | ------------------------------- | ------------------------- |
-| <a href="/images/without.png" data-lightbox="screenshots"><img src="/images/without.png" /></a> | <a href="/images/with.png" data-lightbox="screenshots"><img src="/images/with.png" /></a> |
+| <a href="images/without.png" data-lightbox="screenshots" data-title="Without IIQ Emails"><img src="images/without.png" /></a> | <a href="images/with.png" data-lightbox="screenshots" data-title="After clicking IIQ Emails"><img src="images/with.png" /></a> |
 
 ## Known Limitations
 
