@@ -14,8 +14,8 @@ Drag the link below up to your bookmarks bar:
 
 When viewing any list of tickets in IncidentIQ, click the bookmarklet to enable the copy email links.
 
-| Before                          | After                     |
-| ------------------------------- | ------------------------- |
+| Before                                                                                                                        | After                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | <a href="images/without.png" data-lightbox="screenshots" data-title="Without IIQ Emails"><img src="images/without.png" /></a> | <a href="images/with.png" data-lightbox="screenshots" data-title="After clicking IIQ Emails"><img src="images/with.png" /></a> |
 
 ## Known Limitations
