@@ -1,6 +1,6 @@
 // TODO detect whether affected page is IIQ (only run on viable pages)
 // TODO clean up accumulated scripts at the bottom of the page
-existing = $('.iiq-email');
+const existing = $('.iiq-email');
 if (existing.length) {
   $(existing).remove();
 } else {
@@ -23,21 +23,21 @@ if (existing.length) {
       e.preventDefault();
       navigator.clipboard.writeText(
         '"' +
-          title +
-          ' (Ticket #' +
-          number +
-          ')" <' +
-          guid +
-          '@groton.incidentiq.com>'
+        title +
+        ' (Ticket #' +
+        number +
+        ')" <' +
+        guid +
+        '@groton.incidentiq.com>'
       );
-      const message = $('body').append(
+      $('body').append(
         '<p id="' +
-          guid +
-          '-copied" style="position: absolute; top: 1em; right: 1em; padding: 1em; background: lightgoldenrodyellow; color: darkgoldenrod; border-radius: 0.5em; border: solid 1px goldenrod; z-index:100000;">Email address for ' +
-          title +
-          ' (Ticket #' +
-          number +
-          ') copied to clipboard.</p>'
+        guid +
+        '-copied" style="position: absolute; top: 1em; right: 1em; padding: 1em; background: lightgoldenrodyellow; color: darkgoldenrod; border-radius: 0.5em; border: solid 1px goldenrod; z-index:100000;">Email address for ' +
+        title +
+        ' (Ticket #' +
+        number +
+        ') copied to clipboard.</p>'
       );
       setTimeout(() => {
         $('#' + guid + '-copied').remove();
