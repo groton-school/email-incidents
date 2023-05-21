@@ -1,5 +1,5 @@
 {
-  "name": "@groton/iiq-emails-bookmarklet",
+  "name": "iiq-emails-bookmarklet",
   "version": "1.0.0",
   "description": "Make it easy to copy the email for an IncidentIQ ticket to CC or forward email threads.",
   "keywords": [],
@@ -8,19 +8,28 @@
     "email": "sbattis@groton.org"
   },
   "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git:https://github.com/groton-school/iiq-emails-bookmarklet.git"
+  },
+  "scripts": {
+    "build": "npx webpack"
+  },
   "devDependencies": {
     "@battis/eslint-config": "github:battis/eslint-config",
-    "@battis/prettier-config": "github:battis/prettier-config"
+    "@battis/prettier-config": "github:battis/prettier-config",
+    "@battis/webpack": "github:battis/webpack",
+    "@types/jquery": "3.3.1"
   },
   "prettier": "@battis/prettier-config",
   "eslintConfig": {
     "extends": "@battis/eslint-config",
     "env": {
       "browser": true,
-      "node": false
-    },
-    "globals": {
-      "$": "readonly"
+      "node": true
     }
+  },
+  "dependencies": {
+    "jquery": "3.3.1"
   }
 }

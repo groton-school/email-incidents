@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 (() => {
   // TODO detect whether affected page is IIQ (only run on viable pages)
   // TODO clean up accumulated scripts at the bottom of the page
@@ -6,7 +8,7 @@
     $(existing).remove();
   } else {
     $('.link-view-ticket[href*="/tickets/"]').each((i, a) => {
-      const guid = /tickets\/(.*)/.exec(a.href)[1];
+      const guid = /tickets\/(.*)/.exec((a as HTMLAnchorElement).href)![1];
       const link = $(
         '<a class="iiq-email link" href="#">Copy Email Address</a>'
       ).appendTo($(a).parent().parent());
