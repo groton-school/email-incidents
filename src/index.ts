@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import './styles.scss';
 
 (() => {
   // TODO detect whether affected page is IIQ (only run on viable pages)
@@ -27,7 +28,7 @@ import $ from 'jquery';
           `"${title} (Ticket #${number})" <${guid}@groton.incidentiq.com>`
         );
         $('body').append(
-          `<p id="${guid}-copied" style="position: absolute; top: 1em; right: 1em; padding: 1em; background: lightgoldenrodyellow; color: darkgoldenrod; border-radius: 0.5em; border: solid 1px goldenrod; z-index:100000;">Email address for ${title} (Ticket #${number}) copied to clipboard.< /p>`
+          `<p id="${guid}-copied" class="message">Email address for ${title} (Ticket #${number}) copied to clipboard.</p>`
         );
         setTimeout(() => {
           $(`#${guid}-copied`).remove();
