@@ -16,9 +16,9 @@
     "build": "npx webpack"
   },
   "devDependencies": {
-    "@battis/eslint-config": "github:battis/eslint-config",
-    "@battis/prettier-config": "github:battis/prettier-config",
-    "@battis/webpack": "github:battis/webpack",
+    "@battis/eslint-config": "latest",
+    "@battis/prettier-config": "latest",
+    "@battis/webpack": "latest",
     "@types/jquery": "3.3.1"
   },
   "prettier": "@battis/prettier-config",
