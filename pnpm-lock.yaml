@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   jquery:
-    specifier: 3.3.1
-    version: 3.3.1
+    specifier: 3.5.0
+    version: 3.5.0
 
 devDependencies:
   '@battis/eslint-config':
@@ -4185,8 +4185,8 @@ packages:
       logalot: 2.1.0
     dev: true
 
-  /jquery@3.3.1:
-    resolution: {integrity: sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==}
+  /jquery@3.5.0:
+    resolution: {integrity: sha512-Xb7SVYMvygPxbFMpTFQiHh1J7HClEaThguL15N/Gg37Lri/qKyhRGZYzHRyLH8Stq3Aow0LsHO2O2ci86fCrNQ==}
     dev: false
 
   /js-tokens@4.0.0:
