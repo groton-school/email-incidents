@@ -13,7 +13,7 @@
     "url": "git:https://github.com/groton-school/iiq-emails-bookmarklet.git"
   },
   "scripts": {
-    "build": "npx webpack"
+    "build": "webpack"
   },
   "devDependencies": {
     "@battis/eslint-config": "latest",
