@@ -13,7 +13,8 @@
   "content_scripts": [
     {
       "matches": ["https://*.incidentiq.com/*"],
-      "js": ["scripts/content.js"]
+      "js": ["scripts/content.js"],
+      "css": ["assets/css/styles.css"]
     }
   ],
   "web_accessible_resources": [
