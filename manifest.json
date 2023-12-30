@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Email Incidents",
+  "description": "Make it easy to email a user about a ticket (CCing the ticket management system)",
+  "version": "2.0",
+  "author": "Seth Battis",
+  "icons": {
+    "16": "assets/images/logo-16px.png",
+    "32": "assets/images/logo-32px.png",
+    "48": "assets/images/logo-48px.png",
+    "128": "assets/images/logo-128px.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.incidentiq.com/*"],
+      "js": ["scripts/content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": ["https://*.incidentiq.com/*"],
+      "resources": ["scripts/inject.js"]
+    }
+  ],
+  "externally_connectable": {
+    "matches": ["https://*.incidentiq.com/*"]
+  },
+  "permissions": ["scripting", "activeTab"]
+}
