@@ -11,7 +11,7 @@
       email: ticket.For.Email,
       href: `mailto:${ticket.For.Email}?cc=${encodeURIComponent(
         `"${ticket.Subject} (Ticket #${ticket.TicketNumber})" <${ticket.TicketId}@${host}>`
-      )}&body=${encodeURIComponent(`${ticket.For.FirstName} --`)}`
+      )}`
     };
   }
 
