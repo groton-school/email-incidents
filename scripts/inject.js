@@ -17,7 +17,7 @@
 
   function emailElt(ticketId) {
     const div = document.createElement('div');
-    div.innerHTML = `<div class="iiq-email link"><a href="#" target="_blank"><i class="${iconStyle}"></i> <span class="text">for_email_address</span></a></div>`;
+    div.innerHTML = `<div class="iiq-email link"><a href="#" target="_blank"><i class="${iconStyle}"></i> <span class="text">Send Email</span></a></div>`;
     const link = div.firstChild;
     emailHref(ticketId).then(({ email, href }) => {
       link.firstChild.href = href;
