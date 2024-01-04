@@ -25,6 +25,5 @@
   ],
   "externally_connectable": {
     "matches": ["https://*.incidentiq.com/*"]
-  },
-  "permissions": ["scripting", "activeTab"]
+  }
 }
