@@ -1,4 +1,4 @@
-# iiq-emails-bookmarklet
+# Email Incidents
 
 Make it easy to email a user about a ticket (CCing the ticket management system)
 

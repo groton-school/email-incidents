@@ -1,5 +1,5 @@
 {
-  "name": "iiq-emails-bookmarklet",
+  "name": "@groton/email-incidents",
   "version": "2.0.0",
   "description": "Make it easy to email a user about a ticket (CCing the ticket management system)",
   "keywords": [],
@@ -10,7 +10,7 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git:https://github.com/groton-school/iiq-emails-bookmarklet.git"
+    "url": "git:https://github.com/groton-school/email-incidents.git"
   },
   "scripts": {
     "build": "run-s build:*",
