@@ -19,13 +19,17 @@
       .replace(/--/g, '\u2014') // em-dashes
       .replace(/\b\u2018\b/g, "'"); // And things like "it's" back to normal.;
 
-    return `"${subject} (Ticket #${ticket.TicketNumber})" <${ticket.TicketId}@${host}>`;
+    const name = `${subject} (Ticket #${ticket.TicketNumber})`;
+
+    return { formattedEmail: `"${name}" <${ticket.TicketId}@${host}>`, name };
   }
 
   function link(ticket) {
     return {
       text: ticket.For.Email,
-      href: `mailto:${ticket.For.Email}?cc=${encodeURIComponent(email(ticket))}`
+      href: `mailto:${ticket.For.Email}?cc=${encodeURIComponent(
+        email(ticket).formattedEmail
+      )}`
     };
   }
 
@@ -51,10 +55,14 @@
     elt.innerHTML = `<a href="#" class="copy"><i class="fa-regular fa-copy"></i>&nbsp;Copy Email</a>`;
 
     const copy = elt.querySelector('.copy');
+    const { formattedEmail, name } = email(ticket);
     copy.addEventListener('click', (e) => {
       e.stopPropagation();
       e.preventDefault();
-      navigator.clipboard.writeText(email(ticket));
+      navigator.clipboard.writeText(formattedEmail);
+      chrome.runtime.sendMessage('lnhgaiobanmcghdkjgknfpegmjmnacle', {
+        copiedEmail: name
+      });
     });
     return elt;
   }
