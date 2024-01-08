@@ -1,51 +1,106 @@
 (() => {
   const host = location.host;
-  const iconStyle = 'fa fa-paper-plane';
 
-  async function emailHref(ticketId) {
-    const {
-      data: { Item: ticket }
-    } = await iiq.WebApi.GetTicket(ticketId);
+  const ticketCache = {};
 
+  async function ticket(ticketId) {
+    if (!ticketCache[ticketId]) {
+      ticketCache[ticketId] = iiq.WebApi.GetTicket(ticketId);
+    }
+    setTimeout(() => delete ticketCache[ticketId], 5000);
+    return (await ticketCache[ticketId]).data.Item;
+  }
+
+  function email(ticket) {
+    const subject = ticket.Subject.replace(/'\b/g, '\u2018') // https://stackoverflow.com/a/14890774 // Opening singles
+      .replace(/\b'/g, '\u2019') // Closing singles
+      .replace(/"\b/g, '\u201c') // Opening doubles
+      .replace(/\b"/g, '\u201d') // Closing doubles
+      .replace(/--/g, '\u2014') // em-dashes
+      .replace(/\b\u2018\b/g, "'"); // And things like "it's" back to normal.;
+
+    return `"${subject} (Ticket #${ticket.TicketNumber})" <${ticket.TicketId}@${host}>`;
+  }
+
+  function link(ticket) {
     return {
-      email: ticket.For.Email,
-      href: `mailto:${ticket.For.Email}?cc=${encodeURIComponent(
-        `"${ticket.Subject} (Ticket #${ticket.TicketNumber})" <${ticket.TicketId}@${host}>`
-      )}`
+      text: ticket.For.Email,
+      href: `mailto:${ticket.For.Email}?cc=${encodeURIComponent(email(ticket))}`
     };
   }
 
-  function emailElt(ticketId) {
-    const div = document.createElement('div');
-    div.innerHTML = `<div class="iiq-email link"><a href="#" target="_blank"><i class="${iconStyle}"></i> <span class="text">Send Email</span></a></div>`;
-    const link = div.firstChild;
-    emailHref(ticketId).then(({ email, href }) => {
-      link.firstChild.href = href;
-      link.addEventListener('click', (e) => {
-        e.stopPropagation();
-      });
-      link.querySelector('.text').innerText = email;
+  function sendElt(ticket) {
+    const elt = document.createElement('div');
+    elt.classList.add('email-incidents');
+    elt.innerHTML = `<a class="send" href="#" target="_blank"><i class="fa fa-paper-plane"></i>&nbsp;<span class="text">Send Email</span></a>`;
+    const send = elt.querySelector('.send');
+
+    const { text, href } = link(ticket);
+    send.href = href;
+    send.addEventListener('click', (e) => {
+      e.stopPropagation();
     });
-    return link;
+    send.querySelector('.text').innerText = text;
+
+    return elt;
   }
 
-  function appendEmailToPreview(viewTicketLink) {
+  function copyElt(ticket) {
+    const elt = document.createElement('div');
+    elt.classList.add('email-incidents');
+    elt.innerHTML = `<a href="#" class="copy"><i class="fa-regular fa-copy"></i>&nbsp;Copy Email</a>`;
+
+    const copy = elt.querySelector('.copy');
+    copy.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      navigator.clipboard.writeText(email(ticket));
+    });
+    return elt;
+  }
+
+  async function appendSendToPreview(viewTicketLink) {
     viewTicketLink.classList.add('iiq-email', 'email-link-added');
-    const guid = /tickets\/(.*)/.exec(viewTicketLink.href)[1];
+    const ticketId = /tickets\/(.*)/.exec(viewTicketLink.href)[1];
     viewTicketLink
       .closest('spark-grid-row')
       .querySelector('spark-grid-tickets-col-requested-for')
-      .appendChild(emailElt(guid));
+      .appendChild(sendElt(await ticket(ticketId)));
   }
 
-  function updateEmailMeta(emailMetaDiv) {
+  async function appendCopyToPreview(viewTicketLink) {
+    const ticketId = /tickets\/(.*)/.exec(viewTicketLink.href)[1];
+    viewTicketLink
+      .closest('.ticket-info-cell')
+      .appendChild(copyElt(await ticket(ticketId)));
+  }
+
+  function ticketIdFromLocation() {
     // most common fly-out option
     let ticketId = new URLSearchParams(location.search).get('flyout-id');
     if (!ticketId) {
       // less common ticket page
       ticketId = location.pathname.match(/tickets\/(.*)/)[1];
     }
-    emailMetaDiv.replaceWith(emailElt(ticketId));
+    return ticketId;
+  }
+
+  async function updateEmailMeta(emailMetaDiv) {
+    emailMetaDiv.replaceWith(sendElt(await ticket(ticketIdFromLocation())));
+  }
+
+  async function appendCopyToTicketDetails(detail) {
+    Array.from(
+      detail
+        .closest('spark-agent-ticket-details')
+        .querySelectorAll('spark-ticket-details-bar .ticket-detail')
+    )
+      .pop()
+      .insertAdjacentElement(
+        'afterend',
+        copyElt(await ticket(ticketIdFromLocation()))
+      )
+      .classList.add('ticket-detail');
   }
 
   const observer = new MutationObserver((mutations) => {
@@ -57,14 +112,20 @@
             node.querySelectorAll(
               '.ticket-info-cell .link-view-ticket[href*="/tickets/"]:not(.iiq-email.email-link-added)'
             )
-          ).forEach(appendEmailToPreview);
+          ).forEach((preview) => {
+            appendSendToPreview(preview);
+            appendCopyToPreview(preview);
+          });
 
           // update ticket owners
           Array.from(
             node.querySelectorAll(
               'spark-ticket-requestor:not(:has(div[ng-show="$ctrl.Ticket.For.Email"])) [ng-show="$ctrl.Ticket.Owner.Email"], [ng-show="$ctrl.Ticket.For.Email"]'
             )
-          ).forEach(updateEmailMeta);
+          ).forEach((detail) => {
+            updateEmailMeta(detail);
+            appendCopyToTicketDetails(detail);
+          });
         }
       });
     });

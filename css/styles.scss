@@ -1,6 +1,24 @@
+.email-incidents {
+  .copy,
+  .send {
+    white-space: nowrap;
+  }
+}
+
 spark-grid-tickets-col-requested-for {
-  .iiq-email.link {
-    margin-top: 3px;
-    padding-left: 30px;
+  .email-incidents {
+    .send {
+      margin-top: 3px;
+      padding-left: 30px;
+    }
+  }
+}
+
+.ticket-info-cell {
+  .email-incidents {
+    .copy {
+      display: block;
+      margin-top: 0.5em;
+    }
   }
 }
