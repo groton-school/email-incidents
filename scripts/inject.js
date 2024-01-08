@@ -60,7 +60,7 @@
       e.stopPropagation();
       e.preventDefault();
       navigator.clipboard.writeText(formattedEmail);
-      chrome.runtime.sendMessage('lnhgaiobanmcghdkjgknfpegmjmnacle', {
+      chrome.runtime.sendMessage('pdnapjogoplmplacjefclkajodidjiam', {
         copiedEmail: name
       });
     });

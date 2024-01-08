@@ -1,6 +1,6 @@
 {
   "name": "@groton/email-incidents",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Make it easy to email a user about a ticket (CCing the ticket management system)",
   "keywords": [],
   "author": {

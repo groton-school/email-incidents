@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Email Incidents",
   "description": "Make it easy to email a user about a ticket (CCing the ticket management system)",
-  "version": "2.0",
+  "version": "2.1.0",
   "author": "Seth Battis",
   "icons": {
     "16": "assets/images/logo-16px.png",
