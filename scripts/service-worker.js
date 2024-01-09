@@ -4,7 +4,7 @@ chrome.runtime.onMessageExternal.addListener((request) => {
       type: 'basic',
       iconUrl: chrome.runtime.getURL('assets/images/logo-32px.png'),
       title: 'Email Incidents',
-      message: `Copied email for "${request.copiedEmail}" to  clipboard`
+      message: `Copied email for "${request.copiedEmail}" to clipboard`
     });
   }
 });

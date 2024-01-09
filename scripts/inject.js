@@ -52,7 +52,7 @@
   function copyElt(ticket) {
     const elt = document.createElement('div');
     elt.classList.add('email-incidents');
-    elt.innerHTML = `<a href="#" class="copy"><i class="fa-regular fa-copy"></i>&nbsp;Copy Email</a>`;
+    elt.innerHTML = `<a href="#" class="copy"><i class="fa-regular fa-copy"></i>&nbsp;Copy Ticket Email</a>`;
 
     const copy = elt.querySelector('.copy');
     const { formattedEmail, name } = email(ticket);
