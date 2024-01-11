@@ -90,6 +90,10 @@
       // less common ticket page
       ticketId = location.pathname.match(/tickets\/(.*)/)[1];
     }
+    if (!ticketId) {
+      // even less common ticket creation
+      ticketId = location.pathname.match(/tickets\/confirmation\/(.+)\??/)[1];
+    }
     return ticketId;
   }
 
