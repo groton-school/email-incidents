@@ -1,3 +1,0 @@
-{
-  "extends": "@battis/webpack/ts/tsconfig.json"
-}
